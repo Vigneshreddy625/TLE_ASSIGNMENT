@@ -1,9 +1,26 @@
 import React from "react";
 import { Mail, Phone, Eye, Edit, Trash } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import EditUser from "../Tcrud/EditUser";
+import DeleteUser from "../Tcrud/DeleteUser";
 
-const UserMobileCard = ({ user, index, avatarColors, isSelected, onSelectionChange }) => {
+const UserMobileCard = ({
+  user,
+  index,
+  avatarColors,
+  isSelected,
+  onSelectionChange,
+}) => {
+  const navigate = useNavigate();
+  const handleProfile = (userId) => {
+    navigate(`/profile/${userId}`);
+  };
+
   return (
-    <div className="p-4 hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-purple-50/50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 transition-all duration-300">
+    <div
+      className="p-4 hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-purple-50/50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 transition-all duration-300"
+      onClick={() => handleProfile(user.id)}
+    >
       <div className="flex items-start space-x-3">
         <div className="flex items-center space-x-3">
           <input
@@ -51,16 +68,22 @@ const UserMobileCard = ({ user, index, avatarColors, isSelected, onSelectionChan
             </div>
           </div>
 
-          <div className="flex items-center justify-end space-x-2">
-            <button className="w-8 h-8 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-all">
-              <Eye className="w-4 h-4 mx-auto" />
+          <div className="flex items-center justify-center space-x-1">
+            <button
+              className="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-all duration-200 hover:scale-110 active:scale-95 group cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleProfile(user.id);
+              }}
+            >
+              <Eye className="w-4 h-4 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200" />
             </button>
-            <button className="w-7 h-7 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all">
-              <Edit className="w-3 h-3 mx-auto" />
-            </button>
-            <button className="w-7 h-7 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-all">
-              <Trash className="w-3 h-3 mx-auto" />
-            </button>
+            <div onClick={(e) => e.stopPropagation()}>
+              <EditUser user={user} />
+            </div>
+            <div onClick={(e) => e.stopPropagation()}>
+              <DeleteUser user={user} />
+            </div>
           </div>
         </div>
       </div>
