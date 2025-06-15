@@ -1,16 +1,22 @@
 import React from "react";
-import { Users, Award, TrendingUp } from "lucide-react";
+import { Users, Award, TrendingUp, Star } from "lucide-react";
 import ModeToggle from "../Darkmode/ToggleMode";
 import AddUser from "../Tcrud/AddUser";
 import StatsCard from "./StatsCard";
 
 const Header = ({ users }) => {
-  const avgRating = users.reduce((acc, user) => acc + user.currentRating, 0) / users.length;
+  const avgRating =
+    users.reduce((acc, user) => acc + user.currentRating, 0) / users.length;
+  const avgmaxRating =
+    users.reduce((acc, user) => acc + user.maxRating, 0) / users.length;
   const topPerformers = users.filter((u) => u.currentRating >= 4.7).length;
   return (
     <div className="mb-4 sm:mb-6 relative">
       <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-2xl sm:rounded-3xl blur-3xl"></div>
       <div className="relative bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-6 border border-white/20 dark:border-gray-700/30 shadow-xl">
+        <div className="md:hidden absolute top-2 right-2">
+          <AddUser />
+        </div>
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 space-y-3 sm:space-y-0">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 sm:w-14 sm:h-14 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg">
@@ -25,7 +31,7 @@ const Header = ({ users }) => {
               </p>
             </div>
           </div>
-          <div className="flex items-center justify-end">
+          <div className="hidden md:flex items-center justify-end">
             <AddUser />
           </div>
         </div>
@@ -53,6 +59,14 @@ const Header = ({ users }) => {
             gradient="border-emerald-200/50 dark:border-emerald-700/30"
             bgGradient="from-emerald-50 to-teal-100 dark:from-emerald-900/30 dark:to-teal-900/30"
             iconGradient="from-emerald-500 to-teal-600"
+          />
+          <StatsCard
+            title="Max Rating"
+            value={avgmaxRating.toFixed(1)}
+            icon={Star}
+            gradient="border-indigo-300/50 dark:border-indigo-600/40"
+            bgGradient="from-indigo-50 to-indigo-100 dark:from-indigo-900/30 dark:to-indigo-800/30"
+            iconGradient="from-indigo-400 to-indigo-600"
           />
         </div>
       </div>

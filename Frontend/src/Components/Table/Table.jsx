@@ -177,7 +177,7 @@ function Table() {
 
   return (
     <div className="min-h-screen transition-all duration-500">
-      <div className="min-h-screen px-2 lg:py-2">
+      <div className="min-h-screen px-2 pb-2 lg:py-2">
         <div className="max-w-7xl mx-auto">
           <Header users={users} />
 

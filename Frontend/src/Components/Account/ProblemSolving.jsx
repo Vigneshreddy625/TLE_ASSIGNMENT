@@ -11,7 +11,7 @@ import {
 import { Calendar, Target, TrendingUp, Activity } from 'lucide-react';
 
 const ProblemSolvingData = ({ problemsData }) => {
-  const [problemFilter, setProblemFilter] = useState(30);
+  const [problemFilter, setProblemFilter] = useState(180);
 
   const generateHeatmapData = (days) => {
     const data = [];

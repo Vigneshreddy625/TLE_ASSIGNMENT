@@ -5,10 +5,10 @@ const StatsCard = ({ title, value, icon: Icon, gradient, bgGradient, iconGradien
     <div className={`group relative bg-gradient-to-br ${bgGradient} p-3 sm:p-4 rounded-xl sm:rounded-2xl border ${gradient} hover:shadow-xl transition-all duration-300 transform hover:scale-105`}>
       <div className="flex items-center justify-between">
         <div>
-          <p className={`text-xs font-semibold mb-0.5 ${title.includes('Total') ? 'text-blue-600 dark:text-blue-400' : title.includes('Average') ? 'text-yellow-600 dark:text-yellow-400' : 'text-emerald-600 dark:text-emerald-400'}`}>
+          <p className={`text-xs font-semibold mb-0.5 ${title.includes('Total') ? 'text-blue-600 dark:text-blue-400' : title.includes('Average') ? 'text-yellow-600 dark:text-yellow-400' : title.includes('Max') ? 'text-indigo-600 dark:text-indigo-400' : 'text-emerald-600 dark:text-emerald-400'}`}>
             {title}
           </p>
-          <p className={`text-xl sm:text-2xl font-bold ${title.includes('Total') ? 'text-blue-900 dark:text-blue-100' : title.includes('Average') ? 'text-yellow-900 dark:text-yellow-100' : 'text-emerald-900 dark:text-emerald-100'}`}>
+          <p className={`text-xl sm:text-2xl font-bold ${title.includes('Total') ? 'text-blue-900 dark:text-blue-100' : title.includes('Average') ? 'text-yellow-900 dark:text-yellow-100' : title.includes('Max') ? 'text-indigo-600 dark:text-indigo-400' : 'text-emerald-900 dark:text-emerald-100'}`}>
             {value}
           </p>
         </div>
