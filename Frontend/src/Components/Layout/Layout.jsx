@@ -12,8 +12,8 @@ function Layout() {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-      if (window.innerWidth < 768) {
+      setIsMobile(window.innerWidth < 1024);
+      if (window.innerWidth < 1024) {
         setNavbarCollapsed(true);
         setMobileMenuOpen(false);
       }
@@ -34,16 +34,13 @@ function Layout() {
 
       <div className={`
         ${isMobile ? 'fixed left-0 top-0 h-full z-40' : 'relative h-full lg:p-4'} 
-        ${isMobile ? 'w-64' : ''}
       `}>
-        <div className={`h-full ${isMobile ? 'p-4' : ''}`}>
           <Navbar 
             onToggleCollapse={handleNavbarToggle}
             isMobile={isMobile}
             isOpen={mobileMenuOpen}
             onClose={() => setMobileMenuOpen(false)}
           />
-        </div>
       </div>
 
       <div

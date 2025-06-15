@@ -26,9 +26,11 @@ const UserMobileCard = ({
           <input
             type="checkbox"
             checked={isSelected}
+            onClick={(e) => e.stopPropagation()}
             onChange={(e) => onSelectionChange(user.id, e.target.checked)}
             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 mt-1"
           />
+
           <div
             className={`w-12 h-12 bg-gradient-to-r ${
               avatarColors[index % avatarColors.length]

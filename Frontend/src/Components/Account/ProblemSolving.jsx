@@ -127,7 +127,7 @@ const ProblemSolvingData = ({ problemsData }) => {
           <div className="p-2 bg-gradient-to-br from-green-100 to-teal-100 dark:from-green-900/30 dark:to-teal-900/30 rounded-xl">
             <Target className="w-6 h-6 sm:w-7 sm:h-7 text-green-600 dark:text-green-400" />
           </div>
-          Problem Solving Data
+          Problem Solving
         </h2>
         <select
           value={problemFilter}
@@ -144,52 +144,52 @@ const ProblemSolvingData = ({ problemsData }) => {
       </div>
 
       <div className="grid grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
-        <div className="p-4 bg-gradient-to-br from-purple-50 via-purple-100 to-indigo-100 dark:from-purple-900/30 dark:via-purple-800/30 dark:to-indigo-900/30 rounded-xl border border-purple-200 dark:border-purple-800/50 hover:shadow-lg transition-all duration-300">
+        <div className="p-2 md:p-4 bg-gradient-to-br from-purple-50 via-purple-100 to-indigo-100 dark:from-purple-900/30 dark:via-purple-800/30 dark:to-indigo-900/30 rounded-xl border border-purple-200 dark:border-purple-800/50 hover:shadow-lg transition-all duration-300">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-3 mb-3">
             <div className="p-2 bg-purple-200 dark:bg-purple-800/50 rounded-lg">
-              <TrendingUp className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+              <TrendingUp className="w-4 h-4 md:w-6 md:h-6 text-purple-600 dark:text-purple-400" />
             </div>
-            <span className="text-sm font-semibold text-purple-700 dark:text-purple-300">Most Difficult</span>
+            <span className="text-xs font-semibold text-purple-700 dark:text-purple-300">Most Difficult</span>
           </div>
-          <div className="text-2xl font-bold text-purple-900 dark:text-purple-100 mb-1">{data.mostDifficult.rating}</div>
+          <div className="text-sm md:text-xl font-bold text-purple-900 dark:text-purple-100 mb-1">{data.mostDifficult.rating}</div>
           </div>
           <div className="text-sm text-purple-600 dark:text-purple-400 truncate">{data.mostDifficult.name}</div>
         </div>
 
-        <div className="p-4 bg-gradient-to-br from-blue-50 via-blue-100 to-cyan-100 dark:from-blue-900/30 dark:via-blue-800/30 dark:to-cyan-900/30 rounded-xl border border-blue-200 dark:border-blue-800/50 hover:shadow-lg transition-all duration-300">
+        <div className="p-2 md:p-4 bg-gradient-to-br from-blue-50 via-blue-100 to-cyan-100 dark:from-blue-900/30 dark:via-blue-800/30 dark:to-cyan-900/30 rounded-xl border border-blue-200 dark:border-blue-800/50 hover:shadow-lg transition-all duration-300">
           <div className = "flex justify-between items-center">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-blue-200 dark:bg-blue-800/50 rounded-lg">
-              <Activity className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+              <Activity className="w-4 h-4 md:w-6 md:h-6 text-blue-600 dark:text-blue-400" />
             </div>
             <span className="text-sm font-semibold text-blue-700 dark:text-blue-300">Total Solved</span>
           </div>
-          <div className="text-2xl font-bold text-blue-900 dark:text-blue-100">{data.totalSolved}</div>
+          <div className="text-sm md:text-xl font-bold text-blue-900 dark:text-blue-100">{data.totalSolved}</div>
         </div>
         </div>
 
-        <div className="p-4 bg-gradient-to-br from-green-50 via-green-100 to-emerald-100 dark:from-green-900/30 dark:via-green-800/30 dark:to-emerald-900/30 rounded-xl border border-green-200 dark:border-green-800/50 hover:shadow-lg transition-all duration-300">
+        <div className="p-2 md:p-4 bg-gradient-to-br from-green-50 via-green-100 to-emerald-100 dark:from-green-900/30 dark:via-green-800/30 dark:to-emerald-900/30 rounded-xl border border-green-200 dark:border-green-800/50 hover:shadow-lg transition-all duration-300">
           <div className = "flex justify-between items-center">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-green-200 dark:bg-green-800/50 rounded-lg">
-              <Target className="w-6 h-6 text-green-600 dark:text-green-400" />
+              <Target className="w-4 h-4 md:w-6 md:h-6 text-green-600 dark:text-green-400" />
             </div>
             <span className="text-sm font-semibold text-green-700 dark:text-green-300">Avg Rating</span>
           </div>
-          <div className="text-2xl font-bold text-green-900 dark:text-green-100">{data.averageRating}</div>
+          <div className="text-sm md:text-xl font-bold text-green-900 dark:text-green-100">{data.averageRating}</div>
         </div>
         </div>
 
-        <div className="p-4 bg-gradient-to-br from-orange-50 via-orange-100 to-red-100 dark:from-orange-900/30 dark:via-orange-800/30 dark:to-red-900/30 rounded-xl border border-orange-200 dark:border-orange-800/50 hover:shadow-lg transition-all duration-300">
-          <div className = "flex justify-between items-center">
+        <div className="p-2 md:p-4 bg-gradient-to-br from-orange-50 via-orange-100 to-red-100 dark:from-orange-900/30 dark:via-orange-800/30 dark:to-red-900/30 rounded-xl border border-orange-200 dark:border-orange-800/50 hover:shadow-lg transition-all duration-300">
+          <div className ="flex justify-between items-center">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-orange-200 dark:bg-orange-800/50 rounded-lg">
-              <Calendar className="w-6 h-6 text-orange-600 dark:text-orange-400" />
+              <Calendar className="w-4 h-4 md:w-6 md:h-6 text-orange-600 dark:text-orange-400" />
             </div>
             <span className="text-sm font-semibold text-orange-700 dark:text-orange-300">Per Day</span>
           </div>
-          <div className="text-2xl font-bold text-orange-900 dark:text-orange-100">{data.averagePerDay}</div>
+          <div className="text-sm md:text-xl font-bold text-orange-900 dark:text-orange-100">{data.averagePerDay}</div>
         </div>
         </div>
       </div>

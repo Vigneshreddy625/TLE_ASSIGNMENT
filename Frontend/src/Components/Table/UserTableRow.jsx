@@ -18,7 +18,7 @@ const UserTableRow = ({
   };
   return (
     <tr
-      className="hidden group hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-purple-50/50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 transition-all duration-300"
+      className="tablerow group hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-purple-50/50 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 transition-all duration-300 overflow-auto"
       onClick={() => handleProfile(user.id)}
     >
       <td className="px-4 py-2 align-middle">
