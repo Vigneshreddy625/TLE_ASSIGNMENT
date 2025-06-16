@@ -41,9 +41,9 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-4 space-y-10">
+      <div className="w-full max-w-7xl mx-auto px-2 md:px-6 lg:px-8 pb-4 space-y-10">
         <ProfileHeader studentData={studentData} />
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
           <ContestHistory contestHistory={contestHistory} />
           <ProblemSolvingData problemsData={problemsData} />
         </div>

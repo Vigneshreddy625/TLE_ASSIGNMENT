@@ -121,8 +121,8 @@ const ProblemSolvingData = ({ problemsData }) => {
   const data = problemsData || defaultProblemsData;
 
   return (
-    <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border border-gray-200 dark:border-gray-700 rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl dark:shadow-2xl">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8">
+    <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border border-gray-200 dark:border-gray-700 rounded-2xl p-2 lg:p-4 shadow-xl dark:shadow-2xl">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <h2 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-green-600 to-teal-600 dark:from-green-400 dark:to-teal-400 bg-clip-text text-transparent flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-green-100 to-teal-100 dark:from-green-900/30 dark:to-teal-900/30 rounded-xl">
             <Target className="w-6 h-6 sm:w-7 sm:h-7 text-green-600 dark:text-green-400" />
@@ -132,7 +132,7 @@ const ProblemSolvingData = ({ problemsData }) => {
         <select
           value={problemFilter}
           onChange={(e) => setProblemFilter(Number(e.target.value))}
-          className="px-3 py-2 sm:px-4 sm:py-3 bg-white/90 dark:bg-gray-700/90 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-green-500 dark:focus:ring-green-400 focus:border-transparent transition-all duration-200 text-gray-900 dark:text-white backdrop-blur-sm"
+          className="px-3 py-2 bg-white/90 dark:bg-gray-700/90 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-green-500 dark:focus:ring-green-400 focus:border-transparent transition-all duration-200 text-gray-900 dark:text-white backdrop-blur-sm"
         >
           <option value={7}>Last 7 days</option>
           <option value={30}>Last 30 days</option>
@@ -170,7 +170,7 @@ const ProblemSolvingData = ({ problemsData }) => {
         </div>
 
         <div className="p-2 md:p-4 bg-gradient-to-br from-green-50 via-green-100 to-emerald-100 dark:from-green-900/30 dark:via-green-800/30 dark:to-emerald-900/30 rounded-xl border border-green-200 dark:border-green-800/50 hover:shadow-lg transition-all duration-300">
-          <div className = "flex justify-between items-center">
+          <div className ="flex justify-between items-center">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-green-200 dark:bg-green-800/50 rounded-lg">
               <Target className="w-4 h-4 md:w-6 md:h-6 text-green-600 dark:text-green-400" />
@@ -196,7 +196,7 @@ const ProblemSolvingData = ({ problemsData }) => {
 
       <div className="mb-6 sm:mb-8">
         <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-800 dark:text-gray-200">Problems by Rating</h3>
-        <div className="h-60 sm:h-56 p-3 sm:p-4 bg-gradient-to-br from-gray-50 to-green-50 dark:from-gray-900/50 dark:to-green-900/20 rounded-xl border border-gray-100 dark:border-gray-700 dark:text-black">
+        <div className="h-60 sm:h-[310px] p-3 sm:p-4 bg-gradient-to-br from-gray-50 to-green-50 dark:from-gray-900/50 dark:to-green-900/20 rounded-xl border border-gray-100 dark:border-gray-700 dark:text-black">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data.ratingBuckets}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" className="dark:stroke-gray-600" />

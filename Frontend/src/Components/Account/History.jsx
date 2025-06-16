@@ -174,7 +174,7 @@ const ContestHistory = () => {
           <select
             value={contestFilter}
             onChange={(e) => setContestFilter(Number(e.target.value))}
-            className="w-full md:w-auto px-3 py-2 sm:px-4 sm:py-3 bg-white/90 dark:bg-gray-700/90 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-green-500 dark:focus:ring-green-400 focus:border-transparent transition-all duration-200 text-gray-900 dark:text-white backdrop-blur-sm"
+            className="w-full md:w-auto px-3 py-2  bg-white/90 dark:bg-gray-700/90 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-green-500 dark:focus:ring-green-400 focus:border-transparent transition-all duration-200 text-gray-900 dark:text-white backdrop-blur-sm"
           >
             <option value={30}>Last 30 days</option>
             <option value={90}>Last 90 days</option>
@@ -252,18 +252,18 @@ const ContestHistory = () => {
               key={idx}
               className={`p-2 md:p-4 rounded-xl ${card.gradient} ${card.border} hover:shadow-lg transition-all duration-300`}
             >
-                <div className="flex justify-between items-center">
-              <div className="flex items-center gap-2 mb-2">
-                <div className={`p-2 md:rounded-lg ${card.iconBg}`}>
-                  {card.icon}
+              <div className="flex justify-between items-center">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className={`p-2 md:rounded-lg ${card.iconBg}`}>
+                    {card.icon}
+                  </div>
+                  <span className={`text-sm font-semibold ${card.labelColor}`}>
+                    {card.label}
+                  </span>
                 </div>
-                <span className={`text-sm font-semibold ${card.labelColor}`}>
-                  {card.label}
-                </span>
-              </div>
-              <div className={`text-lg font-bold mb-1 ${card.valueColor}`}>
-                {card.value}
-              </div>
+                <div className={`text-lg font-bold mb-1 ${card.valueColor}`}>
+                  {card.value}
+                </div>
               </div>
               <div
                 className={`text-sm truncate ${
@@ -346,89 +346,83 @@ const ContestHistory = () => {
           <div className="divide-y divide-gray-100 dark:divide-slate-700 overflow-y-auto h-full">
             {filteredContests.slice(0, 8).map((contest, index) => (
               <div
-  key={index}
-  className="p-3 sm:p-4 hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors duration-200"
->
-  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-    {/* Left section: Title, Date, and Rank (Rank goes beside title only on mobile) */}
-    <div className="w-full sm:flex-1 sm:min-w-0">
-      {/* Top row in mobile: title + rank */}
-      <div className="flex justify-between sm:block">
-        <div className="min-w-0">
-          <h3 className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base truncate">
-            {contest.contest}
-          </h3>
-          <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm mt-1">
-            {new Date(contest.date).toLocaleDateString("en-US", {
-              weekday: "short",
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            })}
-          </p>
-        </div>
+                key={index}
+                className="p-3 sm:p-4 hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors duration-200"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <div className="w-full sm:flex-1 sm:min-w-0">
+                    <div className="flex justify-between sm:block">
+                      <div className="min-w-0">
+                        <h3 className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base truncate">
+                          {contest.contest}
+                        </h3>
+                        <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm mt-1">
+                          {new Date(contest.date).toLocaleDateString("en-US", {
+                            weekday: "short",
+                            year: "numeric",
+                            month: "short",
+                            day: "numeric",
+                          })}
+                        </p>
+                      </div>
 
-        {/* Show Rank only on mobile beside title */}
-        <div className="text-right ml-4 sm:hidden">
-          <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">
-            Rank
-          </p>
-          <p className="text-sm font-bold text-gray-900 dark:text-white mt-1">
-            #{contest.rank}
-          </p>
-        </div>
-      </div>
-    </div>
+                      <div className="text-right ml-4 sm:hidden">
+                        <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">
+                          Rank
+                        </p>
+                        <p className="text-sm font-bold text-gray-900 dark:text-white mt-1">
+                          #{contest.rank}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
 
-    {/* Right section: Stats */}
-    <div className="flex flex-wrap w-full sm:w-auto justify-between sm:justify-end items-start gap-4">
-      {/* Show Rank again for desktop only */}
-      <div className="text-center min-w-[60px] hidden sm:block">
-        <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">
-          Rank
-        </p>
-        <p className="text-sm font-bold text-gray-900 dark:text-white mt-1">
-          #{contest.rank}
-        </p>
-      </div>
+                  <div className="flex flex-wrap w-full sm:w-auto justify-between sm:justify-end items-start gap-4">
+                    <div className="text-center min-w-[60px] hidden sm:block">
+                      <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">
+                        Rank
+                      </p>
+                      <p className="text-sm font-bold text-gray-900 dark:text-white mt-1">
+                        #{contest.rank}
+                      </p>
+                    </div>
 
-      <div className="text-center min-w-[60px]">
-        <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">
-          Unsolved
-        </p>
-        <p className="text-sm font-bold text-gray-900 dark:text-white mt-1">
-          {contest.unsolved}
-        </p>
-      </div>
+                    <div className="text-center min-w-[60px]">
+                      <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">
+                        Unsolved
+                      </p>
+                      <p className="text-sm font-bold text-gray-900 dark:text-white mt-1">
+                        {contest.unsolved}
+                      </p>
+                    </div>
 
-      <div className="text-center min-w-[60px]">
-        <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">
-          Rating
-        </p>
-        <p className="text-sm font-bold text-gray-900 dark:text-white mt-1">
-          {contest.rating}
-        </p>
-      </div>
+                    <div className="text-center min-w-[60px]">
+                      <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">
+                        Rating
+                      </p>
+                      <p className="text-sm font-bold text-gray-900 dark:text-white mt-1">
+                        {contest.rating}
+                      </p>
+                    </div>
 
-      <div className="text-center min-w-[60px]">
-        <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">
-          Change
-        </p>
-        <div
-          className={`font-bold mt-1 px-2 py-1 rounded-md text-xs ${
-            contest.change >= 0
-              ? "text-green-700 dark:text-green-300 bg-green-100 dark:bg-green-900/30"
-              : "text-red-700 dark:text-red-300 bg-red-100 dark:bg-red-900/30"
-          }`}
-        >
-          {contest.change >= 0 ? "+" : ""}
-          {contest.change}
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
+                    <div className="text-center min-w-[60px]">
+                      <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">
+                        Change
+                      </p>
+                      <div
+                        className={`font-bold mt-1 px-2 py-1 rounded-md text-xs ${
+                          contest.change >= 0
+                            ? "text-green-700 dark:text-green-300 bg-green-100 dark:bg-green-900/30"
+                            : "text-red-700 dark:text-red-300 bg-red-100 dark:bg-red-900/30"
+                        }`}
+                      >
+                        {contest.change >= 0 ? "+" : ""}
+                        {contest.change}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
