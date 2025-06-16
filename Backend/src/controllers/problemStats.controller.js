@@ -4,7 +4,7 @@ import { getDateRange } from '../utils/dateHelper.js';
 export const getUserProblemStats = async (req, res) => {
   try {
     const { userId } = req.params;
-    const { days = 30 } = req.query;
+    const { days = 180 } = req.query;
     
     const dateRange = getDateRange(days);
     

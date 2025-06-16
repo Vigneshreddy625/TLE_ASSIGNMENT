@@ -41,17 +41,17 @@ export default function DialogDemo() {
               <Input id="number" name="number" />
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="codeforces">Codeforce Handle</Label>
+              <Label htmlFor="codeforces">Codeforce username</Label>
               <Input id="text" name="codeforces" />
             </div>
-            <div className="grid gap-3">
+            {/* <div className="grid gap-3">
               <Label htmlFor="curr_rating">Current Rating</Label>
               <Input id="curr_rating" name="curr_rating" />
             </div>
             <div className="grid gap-3">
               <Label htmlFor="curr_rating">Max Rating</Label>
               <Input id="max_rating" name="max_rating" />
-            </div>
+            </div> */}
           </div>
           <DialogFooter>
             <DialogClose asChild>

@@ -34,7 +34,7 @@ export default function EditUser({ user }) {
           <div className="grid gap-4">
             <div className="grid gap-3">
               <Label htmlFor="name-1">Name</Label>
-              <Input id="name-1" name="name" defaultValue={user.name} />
+              <Input id="name-1" name="name" defaultValue={user.name}/>
             </div>
             <div className="grid gap-3">
               <Label htmlFor="email">Email</Label>
@@ -45,7 +45,7 @@ export default function EditUser({ user }) {
               <Input id="number" name="number" defaultValue={user.phone} />
             </div>
             <div className="grid gap-3">
-              <Label htmlFor="codeforces">Codeforce Handle</Label>
+              <Label htmlFor="codeforces">Codeforce username</Label>
               <Input
                 id="text"
                 name="codeforces"
@@ -58,6 +58,7 @@ export default function EditUser({ user }) {
                 id="curr_rating"
                 name="curr_rating"
                 defaultValue={user.currentRating}
+                disabled
               />
             </div>
             <div className="grid gap-3">
@@ -66,6 +67,7 @@ export default function EditUser({ user }) {
                 id="max_rating"
                 name="max_rating"
                 defaultValue={user.maxRating}
+                disabled
               />
             </div>
           </div>
