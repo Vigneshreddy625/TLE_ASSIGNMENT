@@ -61,14 +61,12 @@ const getHeatmapData = (problems, dateRange) => {
   const heatmap = {};
   const current = new Date(dateRange.startDate);
   
-  // Initialize all dates with 0
   while (current <= dateRange.endDate) {
     const dateStr = current.toISOString().split('T')[0];
     heatmap[dateStr] = 0;
     current.setDate(current.getDate() + 1);
   }
 
-  // Count problems per day
   problems.forEach(problem => {
     const dateStr = problem.date.toISOString().split('T')[0];
     if (heatmap.hasOwnProperty(dateStr)) {

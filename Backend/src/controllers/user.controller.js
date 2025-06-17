@@ -27,9 +27,7 @@ export const createUser = async (req, res) => {
     const user = new User(req.body);
     const savedUser = await user.save();
     
-    // Sync Codeforces data immediately after creating user
     await syncUserData(savedUser._id);
-    
     res.status(201).json(savedUser);
   } catch (error) {
     if (error.code === 11000) {

@@ -22,7 +22,6 @@ app.use(cors({
   }
 }));
 
-// Routes
 app.use('/api/users', userRoutes);
 app.use('/api/history', historyRoutes);
 app.use('/api/problem-stats', problemStatsRoutes);

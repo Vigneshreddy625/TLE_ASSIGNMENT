@@ -55,65 +55,69 @@ export const syncUserData = async (userId) => {
  * @param {string} handle - The Codeforces handle of the user.
  */
 const syncContestHistory = async (userId, handle) => {
-    try {
-        console.log(`Syncing contest history for ${handle}...`);
-        const response = await axios.get(`${CF_API_BASE}/user.rating?handle=${handle}`);
-        const contests = response.data.result;
+  try {
+    console.log(`Syncing contest history for ${handle}...`);
+    const response = await axios.get(`${CF_API_BASE}/user.rating?handle=${handle}`);
+    const contests = response.data.result;
 
-        await History.deleteMany({ user: userId });
+    await History.deleteMany({ user: userId });
 
-        const historyDataPromises = contests.map(async (contest) => {
-            let unsolvedProblemsCount = 0;
-            try {
-                const contestProblemsResponse = await axios.get(
-                    `${CF_API_BASE}/contest.standings?contestId=${contest.contestId}&from=1&count=1&showUnofficial=true`
-                );
-                const allProblemsInContest = contestProblemsResponse.data.result.problems;
-                const totalProblemsInContest = allProblemsInContest.length;
-                const userContestSubmissionsResponse = await axios.get(
-                    `${CF_API_BASE}/contest.status?contestId=${contest.contestId}&handle=${handle}&count=10000`
-                );
-                const userSubmissionsInContest = userContestSubmissionsResponse.data.result;
+    const historyDataPromises = contests.map(async (contest) => {
+      let unsolvedProblemsCount = 0;
 
-                const solvedProblemKeysInContest = new Set();
-                userSubmissionsInContest.forEach(sub => {
-                    if (sub.verdict === 'OK' && sub.problem && sub.problem.contestId && sub.problem.index) {
-                        solvedProblemKeysInContest.add(`${sub.problem.contestId}-${sub.problem.index}`);
-                    }
-                });
+      try {
+        const problemsRes = await axios.get(
+          `${CF_API_BASE}/contest.standings?contestId=${contest.contestId}&from=1&count=1&showUnofficial=true`
+        );
+        const allProblems = problemsRes.data.result.problems;
+        const totalProblems = allProblems.length;
 
-                unsolvedProblemsCount = totalProblemsInContest - solvedProblemKeysInContest.size;
-                if (unsolvedProblemsCount < 0) unsolvedProblemsCount = 0;
+        const submissionsRes = await axios.get(
+          `${CF_API_BASE}/contest.status?contestId=${contest.contestId}&handle=${handle}&count=10000`
+        );
+        const submissions = submissionsRes.data.result;
 
-            } catch (error) {
-                console.warn(`Warning: Could not fetch contest problems or submissions for Contest ID ${contest.contestId} for ${handle}. Error: ${error.message}. Setting unsolvedProblems to -1.`);
-                unsolvedProblemsCount = -1; 
-            }
-
-            return {
-                user: userId,
-                contestId: contest.contestId,
-                contestName: contest.contestName,
-                date: new Date(contest.ratingUpdateTimeSeconds * 1000),
-                oldRating: contest.oldRating,
-                newRating: contest.newRating,
-                ratingChange: contest.newRating - contest.oldRating,
-                rank: contest.rank,
-                unsolvedProblems: unsolvedProblemsCount
-            };
-        });
-        const historyData = await Promise.all(historyDataPromises);
-
-        if (historyData.length > 0) {
-            await History.insertMany(historyData);
-            console.log(`Inserted ${historyData.length} contest history records for ${handle}.`);
-        } else {
-            console.log(`No contest history found for ${handle}.`);
+        const solvedSet = new Set();
+        for (const sub of submissions) {
+          if (sub.verdict === 'OK' && sub.problem?.contestId && sub.problem?.index) {
+            solvedSet.add(`${sub.problem.contestId}-${sub.problem.index}`);
+          }
         }
-    } catch (error) {
-        console.error(`Error syncing contest history for ${handle}:`, error.message);
+
+        unsolvedProblemsCount = Math.max(0, totalProblems - solvedSet.size);
+      } catch (error) {
+        console.warn(
+          `Warning: Could not fetch problems/submissions for contest ${contest.contestId} (${contest.contestName}) — ${error.message}`
+        );
+        unsolvedProblemsCount = -1;
+      }
+
+      return {
+        user: userId,
+        contestId: contest.contestId,
+        contestName: contest.contestName,
+        date: new Date(contest.ratingUpdateTimeSeconds * 1000),
+        oldRating: contest.oldRating,
+        newRating: contest.newRating,
+        ratingChange: contest.newRating - contest.oldRating,
+        rank: contest.rank,
+        unsolvedProblems: unsolvedProblemsCount,
+      };
+    });
+
+    const historyData = await Promise.all(historyDataPromises);
+
+    if (historyData.length > 0) {
+      await History.insertMany(historyData);
+      console.log(`Inserted ${historyData.length} contest history records for ${handle}.`);
+    } else {
+      console.log(`No contest history found for ${handle}.`);
     }
+  } catch (error) {
+    console.error(`Error syncing contest history for ${handle}:`, error.message);
+  }
 };
+
 
 /**
  * Syncs a user's problem submissions, focusing on unique accepted problems.
@@ -172,7 +176,6 @@ const syncProblemSubmissions = async (userId, handle) => {
         console.error(`Error syncing problem submissions for ${handle}:`, error.message);
     }
 };
-
 
 export const syncAllUsers = async () => {
     try {
