@@ -2,7 +2,7 @@ import React from "react";
 import { Users, Award, TrendingUp, Star } from "lucide-react";
 import AddUser from "../Tcrud/AddUser";
 import StatsCard from "./StatsCard";
-import { CronChange } from "../Items/cronChange";
+import CronChange from "../Items/CronChange";
 
 const Header = ({ users }) => {
   const avgRating =

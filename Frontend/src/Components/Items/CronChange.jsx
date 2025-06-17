@@ -1,6 +1,6 @@
 import React from "react";
 
-export const CronChange = ({ value, onChange }) => {
+const CronChange = ({ value, onChange }) => {
   const formatHour = (hour) => {
     const suffix = hour >= 12 ? "PM" : "AM";
     const display = hour % 12 === 0 ? 12 : hour % 12;
@@ -32,3 +32,5 @@ export const CronChange = ({ value, onChange }) => {
     </div>
   );
 };
+
+export default CronChange;
