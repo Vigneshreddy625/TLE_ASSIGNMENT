@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { ThemeProvider } from "./Components/Darkmode/Theme-provider.jsx";
-import { ApiProvider } from "./Context/ApiContext.js";
+import { ApiProvider } from "./Context/ApiContext.jsx"
 import "./index.css";
 import App from "./App.jsx";
 
