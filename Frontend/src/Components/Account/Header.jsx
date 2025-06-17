@@ -40,7 +40,7 @@ const ProfileHeader = ({ studentData}) => {
 
       <div className="flex flex-wrap gap-3 sm:gap-4">
         <div className="group relative rounded-xl bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm border border-white/40 dark:border-slate-700/40 p-3 shadow hover:shadow-md transition hover:scale-[1.02]">
-          <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition" />
+          <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-yellow-400/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition" />
           <div className="relative flex items-center gap-2">
             <div className="p-1.5 rounded-md bg-gradient-to-br from-yellow-400 to-orange-500 shadow">
               <Trophy className="w-4 h-4 text-white" />
@@ -57,7 +57,7 @@ const ProfileHeader = ({ studentData}) => {
         </div>
 
         <div className="group relative rounded-xl bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm border border-white/40 dark:border-slate-700/40 p-3 shadow hover:shadow-md transition hover:scale-[1.02]">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-400/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition" />
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-400/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition rounded-xl" />
           <div className="relative flex items-center gap-2">
             <div className="p-1.5 rounded-md bg-gradient-to-br from-purple-500 to-pink-500 shadow">
               <Award className="w-4 h-4 text-white" />
