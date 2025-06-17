@@ -50,9 +50,10 @@ export const updateUser = async (req, res) => {
       { new: true, runValidators: true }
     );
 
-    // If Codeforces handle was updated, sync data immediately
     if (oldUser.codeforcesHandle !== updatedUser.codeforcesHandle) {
       await syncUserData(updatedUser._id);
+      updatedUser.lastSyncedAt = new Date();
+      await updatedUser.save();
     }
 
     res.json(updatedUser);
@@ -68,22 +69,6 @@ export const deleteUser = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
     res.json({ message: 'User deleted successfully' });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
-export const toggleAutoEmail = async (req, res) => {
-  try {
-    const user = await User.findById(req.params.id);
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-
-    user.autoEmailEnabled = !user.autoEmailEnabled;
-    await user.save();
-
-    res.json({ message: `Auto email ${user.autoEmailEnabled ? 'enabled' : 'disabled'}`, user });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

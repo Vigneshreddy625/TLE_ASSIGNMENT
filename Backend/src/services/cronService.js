@@ -1,4 +1,5 @@
 import cron from 'node-cron';
+import User from '../models/user.model.js';
 import { syncAllUsers } from "./codeforceServices.js"
 import { checkInactiveUsers } from './emailService.js';
 

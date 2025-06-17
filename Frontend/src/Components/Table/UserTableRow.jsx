@@ -1,5 +1,5 @@
 import React from "react";
-import { Mail, Phone, Eye } from "lucide-react";
+import { Mail, Phone, Eye, MoreVertical } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import cflogo from "../../assets/cflogo.webp";
 import EditUser from "../Tcrud/EditUser";
@@ -49,7 +49,7 @@ const UserTableRow = ({
               {user.name}
             </div>
             <div className="text-xs text-gray-500 dark:text-gray-400">
-              Member since 2024
+              Last Synced at 2'0 clock
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@ const UserTableRow = ({
 
       <td className="px-4 py-2 text-center">
         <div className="flex items-center justify-center">
-          <a href={user.Codeforces} target="_blank" rel="noopener noreferrer">
+          <a href={user.Codeforces} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
             <img src={cflogo} alt="Codeforces" className="w-8 h-8" />
           </a>
         </div>
@@ -87,21 +87,21 @@ const UserTableRow = ({
 
       <td className="px-4 py-2 align-middle text-center">
         <div className="flex items-center justify-center space-x-1">
-          <button
-            className="p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-all duration-200 hover:scale-110 active:scale-95 group cursor-pointer"
-            onClick={(e) => {
-              e.stopPropagation();
-              handleProfile(user.id);
-            }}
-          >
-            <Eye className="w-4 h-4 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200" />
-          </button>
           <div onClick={(e) => e.stopPropagation()}>
             <EditUser user={user} />
           </div>
           <div onClick={(e) => e.stopPropagation()}>
             <DeleteUser user={user} />
           </div>
+          <button
+            className="px-1 py-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-all duration-200 hover:scale-110 active:scale-95 group cursor-pointer"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleProfile(user.id);
+            }}
+          >
+            <MoreVertical className="w-4 h-4 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200" />
+          </button>
         </div>
       </td>
     </tr>

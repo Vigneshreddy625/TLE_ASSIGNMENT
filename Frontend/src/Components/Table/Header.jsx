@@ -1,8 +1,8 @@
 import React from "react";
 import { Users, Award, TrendingUp, Star } from "lucide-react";
-import ModeToggle from "../Darkmode/ToggleMode";
 import AddUser from "../Tcrud/AddUser";
 import StatsCard from "./StatsCard";
+import { CronChange } from "../Items/cronChange";
 
 const Header = ({ users }) => {
   const avgRating =
@@ -14,9 +14,6 @@ const Header = ({ users }) => {
     <div className="mb-4 sm:mb-6 relative">
       <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-2xl sm:rounded-3xl blur-3xl"></div>
       <div className="relative bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-6 border border-white/20 dark:border-gray-700/30 shadow-xl">
-        <div className="md:hidden absolute top-2 right-2">
-          <AddUser />
-        </div>
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 space-y-3 sm:space-y-0">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 sm:w-14 sm:h-14 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg">
@@ -31,8 +28,14 @@ const Header = ({ users }) => {
               </p>
             </div>
           </div>
-          <div className="hidden md:flex items-center justify-end">
-            <AddUser />
+          <div className="flex items-center justify-between space-x-0 sm:space-x-3">
+            <CronChange
+              value="0 2 * * *"
+              onChange={(value) => console.log("Cron changed to:", value)}
+            />
+            <div className="flex items-center justify-end">
+              <AddUser />
+            </div>
           </div>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">

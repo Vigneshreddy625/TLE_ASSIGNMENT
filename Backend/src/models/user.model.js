@@ -14,7 +14,7 @@ const UserSchema = new Schema(
     phoneNumber: {
       type: String,
     },
-    avatar:{
+    avatar: {
       type: String,
     },
     codeforcesHandle: {
@@ -29,6 +29,9 @@ const UserSchema = new Schema(
       type: Number,
     },
     lastSyncedAt: {
+      type: Date,
+    },
+    lastReminderSentAt: {
       type: Date,
     },
     autoEmailEnabled: {

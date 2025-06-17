@@ -178,17 +178,19 @@ const syncProblemSubmissions = async (userId, handle) => {
 };
 
 export const syncAllUsers = async () => {
-    try {
-        const users = await User.find({}); 
-        console.log(`Starting data sync for ${users.length} users.`);
+  try {
+    const users = await User.find({}); 
+    console.log(`Starting data sync for ${users.length} users.`);
 
-        for (const user of users) {
-            await syncUserData(user._id);
-            await new Promise(resolve => setTimeout(resolve, 2000)); 
-        }
-
-        console.log('Completed data sync for all users.');
-    } catch (error) {
-        console.error('Error during batch sync for all users:', error.message);
+    for (const user of users) {
+      await syncUserData(user._id);
+      user.lastSyncedAt = new Date();
+      await user.save();
+      await new Promise(resolve => setTimeout(resolve, 2000)); 
     }
+
+    console.log('Completed data sync for all users.');
+  } catch (error) {
+    console.error('Error during batch sync for all users:', error.message);
+  }
 };

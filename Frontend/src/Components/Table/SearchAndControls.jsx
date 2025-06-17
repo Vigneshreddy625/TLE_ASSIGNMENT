@@ -26,14 +26,16 @@ const SearchAndControls = ({
         </div>
 
         <div className="flex justify-between items-center sm:justify-end sm:space-x-4 w-full sm:w-auto">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center gap-2">
             <label className="text-sm text-gray-700 dark:text-gray-300 font-medium">
               Show
             </label>
             <select
               value={itemsPerPage}
               onChange={(e) => setItemsPerPage(Number(e.target.value))}
-              className="px-3 py-1.5 border-0 bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm rounded-lg focus:ring-2 focus:ring-blue-500/50 focus:outline-none text-sm text-gray-900 dark:text-white shadow"
+              className="px-3 py-1.5 rounded-lg text-sm shadow-sm bg-white/70 dark:bg-gray-900/70 
+                 text-gray-900 dark:text-white backdrop-blur-sm border border-gray-300 dark:border-gray-700 
+                 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition"
             >
               {[5, 10, 25, 50].map((val) => (
                 <option key={val} value={val}>
@@ -45,12 +47,13 @@ const SearchAndControls = ({
 
           <button
             onClick={downloadCSV}
-            className="group relative bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-sm font-medium shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+            className="group flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 
+               hover:from-green-600 hover:to-emerald-700 text-white text-sm font-medium 
+               px-4 py-2 rounded-xl shadow-md hover:shadow-lg focus:outline-none focus:ring-2 
+               focus:ring-green-500/50 transition-all duration-300 transform hover:scale-105"
           >
-            <div className="flex items-center space-x-2">
-              <Download className="w-4 h-4 group-hover:animate-bounce" />
-              <span>Export</span>
-            </div>
+            <Download className="w-4 h-4 group-hover:animate-bounce" />
+            <span>Export</span>
           </button>
         </div>
       </div>

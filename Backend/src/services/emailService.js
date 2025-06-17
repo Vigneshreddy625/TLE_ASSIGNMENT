@@ -33,6 +33,7 @@ export const sendInactivityReminder = async (userId) => {
     });
 
     user.reminderEmailCount += 1;
+    user.lastReminderSentAt = new Date();
     await user.save();
 
     console.log(`Sent inactivity reminder to ${user.email}`);
@@ -51,7 +52,7 @@ export const checkInactiveUsers = async () => {
     for (const user of users) {
       const recentSubmissions = await ProblemStats.find({
         user: user._id,
-        date: { $gte: sevenDaysAgo }
+        date: { $gte: sevenDaysAgo },
       }).limit(1);
 
       if (recentSubmissions.length === 0) {

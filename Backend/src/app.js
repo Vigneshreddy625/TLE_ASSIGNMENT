@@ -3,6 +3,7 @@ import cors from 'cors';
 import userRoutes from './routes/user.routes.js';
 import historyRoutes from './routes/history.routes.js';
 import problemStatsRoutes from './routes/problemStats.routes.js';
+import emailRoutes from "./routes/email.routes.js";
 import { errorHandler } from "./middlewares/errorHandler.middleware.js"
 import { startCronJobs, updateCronSchedule, getCurrentSchedule } from './services/cronService.js';
 
@@ -25,6 +26,7 @@ app.use(cors({
 app.use('/api/users', userRoutes);
 app.use('/api/history', historyRoutes);
 app.use('/api/problem-stats', problemStatsRoutes);
+app.use('/api/email', emailRoutes);
 
 app.get('/api/cron/schedule', (req, res) => {
   res.json({ schedule: getCurrentSchedule() });
