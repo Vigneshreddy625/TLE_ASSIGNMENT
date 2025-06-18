@@ -7,7 +7,6 @@ import React, {
   useRef,
 } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const ApiContext = createContext();
 const API_URL = "https://api.tle.com";
@@ -35,7 +34,6 @@ export const ApiProvider = ({ children }) => {
   const [emailSettings, setEmailSettings] = useState(null);
   const [cronSchedule, setCronSchedule] = useState(null);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
 
   const clearError = useCallback(() => {
     setError(null);
@@ -45,9 +43,8 @@ export const ApiProvider = ({ children }) => {
     setError(error);
     if (error.response && error.response.status === 401) {
       console.log("Unauthorized access, redirecting to login");
-      navigate('/login'); 
     }
-  }, [navigate]);
+  }, []);
 
   const fetchAllUsers = useCallback(async () => {
     setLoading(true);
